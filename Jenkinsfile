@@ -96,7 +96,7 @@ pipeline {
                 echo "Stopping/removing any old container..."
                 sh """
                     docker rm -f ${env.CONTAINER_NAME} || true
-                    docker run -d --name ${env.CONTAINER_NAME} -p 8080:80 ${env.FULL_IMAGE}
+                    docker run -d --name ${env.CONTAINER_NAME} -p 8081:3000 ${env.FULL_IMAGE}
                 """
             }
         }
