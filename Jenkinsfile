@@ -9,7 +9,7 @@ pipeline {
         )
         choice(
             name: 'GIT_BRANCH',
-            choices: ['master', 'develop', 'release'],
+            choices: ['main', 'develop', 'release'],
             description: 'Git branch to checkout and build from'
         )
         booleanParam(
@@ -58,7 +58,7 @@ pipeline {
             steps {
                 echo "Checking out branch: ${params.GIT_BRANCH}"
                 git branch: "${params.GIT_BRANCH}",
-                    url: 'https://github.com/docker/getting-started-app.git'
+                    url: 'https://github.com/vkathiravan001-lang/getting-started-app.git'
             }
         }
 
@@ -96,7 +96,7 @@ pipeline {
                 echo "Stopping/removing any old container..."
                 sh """
                     docker rm -f ${env.CONTAINER_NAME} || true
-                    docker run -d --name ${env.CONTAINER_NAME} -p 8080:80 ${env.FULL_IMAGE}
+                    docker run -d --name ${env.CONTAINER_NAME} -p 8081:3000 ${env.FULL_IMAGE}
                 """
             }
         }
