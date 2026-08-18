@@ -9,7 +9,7 @@ pipeline {
         )
         choice(
             name: 'GIT_BRANCH',
-            choices: ['master', 'develop', 'release'],
+            choices: ['main', 'develop', 'release'],
             description: 'Git branch to checkout and build from'
         )
         booleanParam(
@@ -58,7 +58,7 @@ pipeline {
             steps {
                 echo "Checking out branch: ${params.GIT_BRANCH}"
                 git branch: "${params.GIT_BRANCH}",
-                    url: 'https://github.com/docker/getting-started-app.git'
+                    url: 'https://github.com/vkathiravan001-lang/getting-started-app.git'
             }
         }
 
